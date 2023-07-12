@@ -1,10 +1,7 @@
 {
   "images" : [
     {
-<<<<<<<< HEAD:FisioDance/Assets.xcassets/maisuma.imageset/Contents.json
-========
       "filename" : "fav-icon.png",
->>>>>>>> develop:FisioDance/Assets.xcassets/fav-icon.imageset/Contents.json
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -13,10 +10,6 @@
       "scale" : "2x"
     },
     {
-<<<<<<<< HEAD:FisioDance/Assets.xcassets/maisuma.imageset/Contents.json
-      "filename" : "maisuma.png",
-========
->>>>>>>> develop:FisioDance/Assets.xcassets/fav-icon.imageset/Contents.json
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -29,7 +29,7 @@ struct ContentView: View {
                     Button(action: {
                         
                     }) {
-                        NavigationLink(destination: GameView()){
+                        NavigationLink(destination: ListaDeAtividades()){
                             ZStack{
                                 Image("primary")
                                     .resizable()

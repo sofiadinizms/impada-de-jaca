@@ -19,14 +19,6 @@ struct ARModel {
         
         arView = ARView(frame: .zero)
         arView.session.run(ARFaceTrackingConfiguration())
-        
-        let handAnchor = AnchorEntity(.face)
-        handAnchor.name = "handAnchor"
-        arView.scene.addAnchor(handAnchor)
-        
-        let cameraAnchor = AnchorEntity(.camera)
-        cameraAnchor.name = "cameraAnchor"
-        arView.scene.addAnchor(cameraAnchor)
     }
     
     mutating func updateHeadTilt() {
@@ -35,6 +27,20 @@ struct ARModel {
         let cameraAnchor = arView.scene.anchors.first(where: {$0.name == "cameraAnchor" })
         
         handTilt = handAnchor?.orientation(relativeTo: cameraAnchor).axis.z ?? 0
+    }
+    
+    func pauseSession(){
+        for anchor in arView.scene.anchors {
+            arView.scene.removeAnchor(anchor)
+        }
+        
+        arView.session.pause()
+        arView.removeFromSuperview()
+        
+    }
+    
+    func restartSession(){
+        arView.session.run(ARFaceTrackingConfiguration())
     }
     
 }

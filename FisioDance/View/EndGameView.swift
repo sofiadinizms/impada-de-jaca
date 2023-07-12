@@ -69,7 +69,7 @@ struct EndGameView: View {
                             Button(action: {
                                 //action here
                             }) {
-                                NavigationLink(destination: GamesListView()){
+                                NavigationLink(destination: ListaDeAtividades()){
                                     ZStack {
                                         Image("menu-button")
                                         

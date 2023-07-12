@@ -80,22 +80,24 @@ struct ListaDeAtividades: View {
                 .offset(y: -320)
                 
                 HStack(alignment: .center) {
-                    ScrollView(.horizontal) {
-                        LazyHGrid( rows: row
-                                   //                spacing: 10
-                        ) {
-                            
-                            ForEach(exercicios, id: \.self) { item in
-                                ListaDeAtividadesCard(exercicio: Exercicios(title: item.title, duration: item.duration, subtitle: item.subtitle, image: item.image, background: item.background, emoji: item.emoji))
-                                    .frame(height: 80)
-                            }
-                            
-                        }
-                        
-                        .padding()
-                        
-                    }
-                    .scrollIndicators(.hidden)
+                    ListaDeAtividadesCard(exercicio: Exercicios(title: exercicios[0].title, duration: exercicios[0].duration, subtitle: exercicios[0].subtitle, image: exercicios[0].image, background: exercicios[0].background, emoji: exercicios[0].emoji))
+                        .frame(height: 80)
+//                    ScrollView(.horizontal) {
+//                        LazyHGrid( rows: row
+//                                   //                spacing: 10
+//                        ) {
+//
+//                            ForEach(exercicios, id: \.self) { item in
+//                                ListaDeAtividadesCard(exercicio: Exercicios(title: item.title, duration: item.duration, subtitle: item.subtitle, image: item.image, background: item.background, emoji: item.emoji))
+//                                    .frame(height: 80)
+//                            }
+//
+//                        }
+//
+//                        .padding()
+//
+//                    }
+//                    .scrollIndicators(.hidden)
                 }
                 //.border(.black)
                 .frame(height: 556)

@@ -17,7 +17,6 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     @Published private var model : ARModel = ARModel()
     @ObservedObject var settings =  Settings.shared
     
-//    public var result: String = "oi"
     
     
     let handModel = try! HandPoseClassifierComplete(configuration: MLModelConfiguration())
@@ -98,86 +97,15 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
             
             
         }
-
-            
-            
         
-        
-        
-//        for anchor in anchors {
-//
-//            guard let faceAnchor = anchor as? ARFaceAnchor else { continue }
-//            guard let frame = session.currentFrame else { continue }
-//            let pixelBuffer = frame.capturedImage
-//
-//            let request = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:])
-//            let handler = VNImageRequestHandler(ciImage: CVImageBuffer, orientation: .left)
-//
-//            let jointNames = ["thumbTip", "indexTip", "middleTip", "ringTip", "littleTip"]
-//
-//            do {
-////                try handler.perform([self.])
-//                guard let observations = request.results as? [VNRecognizedPointsObservation], !observations.isEmpty else { return }
-//                let observation = observations[0]
-//
-//                var points: [String: CGPoint] = [:]
-//                for jointName in jointNames {
-//                    guard let joint = observation.joints[VNHumanHandPoseObservation.JointName(rawValue: jointName)] else { continue }
-//                    let point = CGPoint(x: CGFloat(joint.location.x), y: CGFloat(joint.location.y))
-//                    points[jointName] = point
-//                }
-//
-//                let prediction = try? parent.handPoseClassifier.prediction(thumbTip: points["thumbTip"]!, indexTip: points["indexTip"]!, middleTip: points["middleTip"]!, ringTip: points["ringTip"]!, littleTip: points["littleTip"]!)
-//
-//                // do something with the prediction (e.g. update UI, add 3D object to scene, etc.)
-//
-//            } catch {
-//                print(error)
-//            }
-//        }
-        
-        //        func updateCoreML() {
-        //            let pixbuff : CVPixelBuffer? = frame.capturedImage
-        //            if pixbuff == nil { return }
-        //
-        //            let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixbuff!, orientation: .left,options: [:])
-        //            do {
-        //                try imageRequestHandler.perform(GameView.visionRequests)
-        //            } catch {
-        //                print(error)
-        //            }
-        //
-        //        }
-        
-        //
-        //        let pixelBuffer = frame.capturedImage
-        //        let handPoseRequest = VNDetectHumanHandPoseRequest()
-        //        handPoseRequest.maximumHandCount = 1
-        //        handPoseRequest.revision = VNDetectHumanHandPoseRequestRevision1
-        //
-        //        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:])
-        //        do {
-        //            try handler.perform([handPoseRequest])
-        //        } catch {
-        //            assertionFailure("Human Pose Request failed: \(error)")
-        //        }
-        //
-        //        guard let handPoses = handPoseRequest.results, !handPoses.isEmpty else {
-        //            // No effects to draw, so clear out current graphics
-        //            return
-        //        }
-        //        let handObservation = handPoses.first
-        //
-        //        if frameCounter % handPosePredictionInterval == 0 {
-        //
-        //            guard let keypointsMultiArray = try? handObservation!.keypointsMultiArray()
-        //        else { fatalError() }
-        //            let handPosePrediction = try HandPoseClassifier.prediction()
-        //            let confidence = handPosePrediction.labelProbabilities[handPosePrediction.label]!
-        //
-        //            if confidence > 0.9 {
-        //               renderHandPoseEffect(name: handPosePrediction.label)
-        //            }
-        //
     }
+    
+    func endSession(){
+        model.pauseSession()
+    }
+    
+    func beginSession(){
+        model.restartSession()
+    }
+
 }

@@ -75,7 +75,7 @@ struct GameView : View {
                             
                         }
                         .foregroundColor(arViewModel.tiltLeft ? .green : .secondary)
-                    NavigationLink(destination: ListaDeAtividades()) {
+                    NavigationLink(destination: EndGameView()) {
                         Image("back-button")
                             .position(x:70, y: 30)
                     }
@@ -178,8 +178,14 @@ struct GameView : View {
                 
             }
             .onAppear(){
+                arViewModel.beginSession()
                 playSoundtrack(sound: "sunny")
-            }.navigationBarHidden(true)
+            }
+            .onDisappear(){
+                arViewModel.endSession()
+            }
+            .navigationBarHidden(true)
+        
         
         
     }
